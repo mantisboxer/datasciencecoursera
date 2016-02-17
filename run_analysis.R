@@ -64,3 +64,7 @@ full <- select(full,setID,subjects,activityID, activityName,2:67)
 # build statistics table
 
 stats <- full %>% group_by(activityName,subjects) %>% select(activityName,subjects,5:70) %>% summarize_each(funs(mean))
+
+# write tidy datafile
+
+write.table(stats,"tidy_stats.txt", row.names = FALSE)
